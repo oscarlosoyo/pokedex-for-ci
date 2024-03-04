@@ -2,8 +2,7 @@ name: HolaMundo Midudev
 
 on:
   push:
-    branches:
-      - main
+    branches: [demo-oscar]
 
 jobs:
   hello_world:
