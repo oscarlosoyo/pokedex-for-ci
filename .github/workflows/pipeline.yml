@@ -11,7 +11,7 @@ on:
 jobs:
 
   avoid_reduncy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
       - name: Cancel Previous Redundant Builds
         uses: styfle/cancel-workflow-action@0.9.1
@@ -19,12 +19,12 @@ jobs:
           access_token: ${{ github.token }}
 
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           cache: 'npm'
           node-version: '14'
@@ -34,12 +34,12 @@ jobs:
         run: npm run eslint
 
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           cache: 'npm'
           node-version: '14'
@@ -54,12 +54,12 @@ jobs:
 
   test:
     needs: [lint, build]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           cache: 'npm'
           node-version: '14'
@@ -74,12 +74,12 @@ jobs:
 
   e2e:
     needs: [lint, build]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           cache: 'npm'
           node-version: '14'
