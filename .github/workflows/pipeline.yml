@@ -13,7 +13,7 @@ jobs:
   avoid_reduncy:
     runs-on: ubuntu-18.04
     steps:
-      - name: Cancel Previous Redundant Builds
+      - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action
         with:
           access_token: ${{ github.token }}
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '14'
+          node-version: '18'
       - name: Install dependencies
         run: npm ci
       - name: Lint
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '14'
+          node-version: '18'
       - name: Install dependencies
         run: npm ci
       - name: Build
@@ -62,7 +62,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '14'
+          node-version: '18'
       - name: Install dependencies
         run: npm ci
       - uses: actions/download-artifact@v4
@@ -82,7 +82,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '14'
+          node-version: '18'
       - name: Install dependencies
         run: npm ci
       - uses: actions/download-artifact@v4
