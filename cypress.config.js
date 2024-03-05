@@ -1,6 +1,6 @@
-module.exports = defineConfig({
+module.exports = {
   e2e: {
     supportFile: false,
     video: false
   },
-})
+}
