@@ -21,10 +21,10 @@ jobs:
   lint:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@V3
+      - uses: actions/checkout@V2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@V3
+      - uses: actions/setup-node@V2
         with:
           cache: 'npm'
           node-version: '18'
@@ -36,10 +36,10 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@V3
+      - uses: actions/checkout@V2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@V3
+      - uses: actions/setup-node@V2
         with:
           cache: 'npm'
           node-version: '18'
@@ -47,7 +47,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - uses: actions/upload-artifact@V3
+      - uses: actions/upload-artifact@V2
         with:
           name: dist
           path: dist
@@ -56,16 +56,16 @@ jobs:
     needs: [lint, build]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@V3
+      - uses: actions/checkout@V2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@V3
+      - uses: actions/setup-node@V2
         with:
           cache: 'npm'
           node-version: '18'
       - name: Install dependencies
         run: npm ci
-      - uses: actions/download-artifact@V3
+      - uses: actions/download-artifact@V2
         with:
           name: dist
           path: dist
@@ -76,21 +76,21 @@ jobs:
     needs: [lint, build]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@V3
+      - uses: actions/checkout@V2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@V3
+      - uses: actions/setup-node@V2
         with:
           cache: 'npm'
           node-version: '18'
       - name: Install dependencies
         run: npm ci
-      - uses: actions/download-artifact@V3
+      - uses: actions/download-artifact@V2
         with:
           name: dist
           path: dist
       - name: E2E tests
-        uses: cypress-io/github-action@V3
+        uses: cypress-io/github-action@V2
         with:
           command: npm run test:e2e
           start: npm run start-test
