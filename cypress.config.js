@@ -1,5 +1,5 @@
-module.exports = {
+export default {
   e2e: {
     video: false
   }
-};
+}
