@@ -35,13 +35,22 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [caching_node]
     steps:
+      - uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+          node-version: '15'
       - name: Lint
         run: npm run eslint
+        
 
   build:
     runs-on: ubuntu-20.04
     needs: [caching_node]
     steps:
+      - uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+          node-version: '15'
       - name: Build
         run: npm run build
       - uses: actions/upload-artifact@v2
